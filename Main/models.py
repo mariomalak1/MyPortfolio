@@ -8,6 +8,9 @@ class Owner(models.Model):
 	Age = models.IntegerField()
 	Resume_url = models.CharField(max_length=250)
 	description = models.TextField()
+	job_title = models.CharField(max_length=80)
+	# Logo  -> Image
+
 
 	def __str__(self):
 		return self.name
