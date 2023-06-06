@@ -1,0 +1,62 @@
+{% extends "main.html" %}
+
+{% block head %}
+	<!-- Add this script tag at the top of your template -->
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+{% endblock %}
+
+{% block body %}
+
+	<form method="POST" action="">
+		{% csrf_token %}
+		<input type="hidden" name="form_count" id="form-count" value="1">
+		{{ form.as_p }}
+
+		<br>
+		<br>
+		<br>
+
+		<select style="width:50%; height:30%" multiple>
+			<option>mario</option>
+			<option>malak</option>
+			<option>alabd</option>
+			<option>sefen</option>
+			<option>so</option>
+			<option>mammm</option>
+			<option>ll</option>
+			<option>aa</option>
+			<option>bb</option>
+			<option>cc</option>
+			<option>dd</option>
+			<option>ee</option>
+		</select>
+		<br>
+		<br>
+		<br>
+
+		<button id="add-form">Add Form</button>
+		<input type="submit" value="Save">
+
+	</form>
+
+<!-- JavaScript code to add new forms -->
+<script>
+$(document).ready(function() {
+    let formCount = 1;  // Track the number of forms
+
+    $('#add-form').click(function(e) {
+        e.preventDefault();
+        let newForm = `
+            <h3>Form ${formCount + 1}</h3>
+            <input type="text" name="field1_${formCount + 1}" placeholder="Field 1">
+            <input type="text" name="field2_${formCount + 1}" placeholder="Field 2">
+            <!-- Add more fields as needed -->
+        `;
+        $('form').append(newForm);
+        formCount++;
+    });
+});
+</script>
+
+
+{% endblock %}
